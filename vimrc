@@ -119,7 +119,7 @@ let g:emmet_html5=1
 let g:use_emmet_complete_tag=1
 map <leader>y <C-y>n
 map <leader>Y <C-y>N
-vmap <leader>w <C-y>,
+vmap <leader>wr <C-y>,
 
 """""""""""""""""
 "  delimitmate  "
@@ -294,9 +294,9 @@ set t_Co=256
 
 set background=dark
 if !has("gui_running")
-  " colorscheme t256
-  " colorscheme desert256
-  " colorscheme devbox-dark-256
+  "colorscheme t256
+  "colorscheme desert256
+  "colorscheme devbox-dark-256
   " let g:seoul256_background = 256
   colorscheme molokai
   let g:molokai_original=1
@@ -502,3 +502,22 @@ au BufRead,BufNewFile /etc/nginx/*,nginx.conf,/usr/local/nginx/conf/* if &ft == 
 "let g:airline_paste_symbol = 'Þ'
 "let g:airline_readonly_symbol = 'Ʀ'
 " }}} Airline "
+
+" Allowed vim modeline commands {{{ "
+ let g:git_modelines_allowed_items = [
+                 \ "textwidth",   "tw",
+                 \ "softtabstop", "sts",
+                 \ "tabstop",     "ts",
+                 \ "shiftwidth",  "sw",
+                 \ "expandtab",   "et",   "noexpandtab", "noet",
+                 \ "filetype",    "ft",
+                 \ "foldmethod",  "fdm",
+                 \ "readonly",    "ro",   "noreadonly", "noro",
+                 \ "rightleft",   "rl",   "norightleft", "norl",
+                 \ "cindent",     "cin",  "nocindent", "nocin",
+                 \ "smartindent", "si",   "nosmartindent", "nosi",
+                 \ "autoindent",  "ai",   "noautoindent", "noai",
+                 \ "spell",
+                 \ "spelllang"
+                 \ ]
+" }}} Allowed vim modeline commands "
