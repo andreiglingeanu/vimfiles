@@ -132,6 +132,8 @@ let delimitMate_expand_cr=1
 
 " autoread file when changed
 set autoread
+" set modelines
+set modeline
 " use visual bell instead of beeping
 set visualbell
 " show number column
