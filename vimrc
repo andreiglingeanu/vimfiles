@@ -59,74 +59,10 @@ call vundle#end()
 
 filetype plugin indent on
 
+" leader key
+let mapleader=","
+
 " }}}  "
-
-" Plugins configuration {{{ "
-
-" Trigger configuration. Do not use <tab> if you use
-" https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-map <Leader>m :call UltiSnips_ListSnippets()<cr>
-
-""""""""""""""
-"  supertab  "
-""""""""""""""
-let g:SuperTabCrMapping = 0
-
-"""""""""""""""
-"  rails.vim  "
-"""""""""""""""
-" Change which file opens after executing :Rails command
-let g:rails_default_file='config/database.yml'
-let g:ruby_path = "/usr/bin/ruby"
-
-""""""""""""""
-"  syntasic  "
-""""""""""""""
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1    " Put errors on left side
-let g:syntastic_quiet_warnings = 1  " Only errors, not warnings please
-let g:syntastic_disabled_filetypes = ['html']
-if has('unix')
-  let g:syntastic_error_symbol = '★'
-  let g:syntastic_style_error_symbol = '>'
-  let g:syntastic_warning_symbol = '⚠'
-  let g:syntastic_style_warning_symbol = '>'
-else
-  let g:syntastic_error_symbol = '!'
-  let g:syntastic_style_error_symbol = '>'
-  let g:syntastic_warning_symbol = '.'
-  let g:syntastic_style_warning_symbol = '>'
-endif
-
-"""""""""""
-"  ctrlp  "
-"""""""""""
-map <leader><leader>t <C-p>
-map <leader><leader>y :CtrlPBuffer<cr>
-let g:ctrlp_show_hidden=1
-let g:ctrlp_working_path_mode=0
-
-"""""""""""
-"  emmet  "
-"""""""""""
-imap <C-@> <C-y>,
-imap <C-e> <C-y>,
-let g:user_emmet_mode='a'    "enable all function in all mode.
-let g:emmet_html5=1
-let g:use_emmet_complete_tag=1
-map <leader>y <C-y>n
-map <leader>Y <C-y>N
-vmap <leader>wr <C-y>,
-
-"""""""""""""""""
-"  delimitmate  "
-"""""""""""""""""
-imap <C-K> <Plug>delimitMateS-Tab
-let delimitMate_expand_cr=1
-" }}} Plugins configuration "
 
 " Basic Editing Configuration {{{ "
 
@@ -199,9 +135,6 @@ set fileencoding=utf-8
 " o-prefixed numbers are still decimal
 set nrformats-=octal
 
-" leader key
-let mapleader=","
-
 " Fix slow O inserts
 " ":set timeout timeoutlen=1000 ttimeoutlen=100
 " Set the tag file search order
@@ -269,7 +202,6 @@ augroup vimrcEx
   autocmd! FileType javascript  map <leader>r :! clear && node %<cr>
   autocmd! FileType perl  map <leader>r :! clear && perl %<cr>
   autocmd! FileType ruby map <Leader>r :!clear && ruby %<cr>
-
 
   command! -nargs=* -complete=file -bar JavaCompile ! clear && javac-algs4 % && java-algs4 %:r <args>
 
@@ -352,6 +284,79 @@ imap <C-u> <C-c>bgUeea
 
 
 " }}} Misc Key Maps "
+
+" Plugins configuration {{{ "
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+map <Leader>m :call UltiSnips_ListSnippets()<cr>
+autocmd! FileType php :UltiSnipsAddFiletypes php
+autocmd! FileType eruby :UltiSnipsAddFiletypes eruby
+autocmd! FileType ruby :UltiSnipsAddFiletypes ruby
+autocmd! FileType css :UltiSnipsAddFiletypes css
+autocmd! FileType javascript :UltiSnipsAddFiletypes javascript
+autocmd! FileType hmtl :UltiSnipsAddFiletypes html
+
+""""""""""""""
+"  supertab  "
+""""""""""""""
+let g:SuperTabCrMapping = 0
+
+"""""""""""""""
+"  rails.vim  "
+"""""""""""""""
+" Change which file opens after executing :Rails command
+let g:rails_default_file='config/database.yml'
+let g:ruby_path = "/usr/bin/ruby"
+
+""""""""""""""
+"  syntasic  "
+""""""""""""""
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1    " Put errors on left side
+let g:syntastic_quiet_warnings = 1  " Only errors, not warnings please
+let g:syntastic_disabled_filetypes = ['html']
+if has('unix')
+  let g:syntastic_error_symbol = '★'
+  let g:syntastic_style_error_symbol = '>'
+  let g:syntastic_warning_symbol = '⚠'
+  let g:syntastic_style_warning_symbol = '>'
+else
+  let g:syntastic_error_symbol = '!'
+  let g:syntastic_style_error_symbol = '>'
+  let g:syntastic_warning_symbol = '.'
+  let g:syntastic_style_warning_symbol = '>'
+endif
+
+"""""""""""
+"  ctrlp  "
+"""""""""""
+map <leader><leader>t <C-p>
+map <leader><leader>y :CtrlPBuffer<cr>
+let g:ctrlp_show_hidden=1
+let g:ctrlp_working_path_mode=0
+
+"""""""""""
+"  emmet  "
+"""""""""""
+imap <C-@> <C-y>,
+imap <C-e> <C-y>,
+let g:user_emmet_mode='a'    "enable all function in all mode.
+let g:emmet_html5=1
+let g:use_emmet_complete_tag=1
+map <leader>y <C-y>n
+map <leader>Y <C-y>N
+vmap <leader>w <C-y>,
+
+"""""""""""""""""
+"  delimitmate  "
+"""""""""""""""""
+imap <C-K> <Plug>delimitMateS-Tab
+let delimitMate_expand_cr=1
+" }}} Plugins configuration "
 
 " Arrow Keys are unacceptable {{{ "
 map <Left> :echo "no!"<cr>
