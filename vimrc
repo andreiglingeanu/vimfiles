@@ -193,21 +193,21 @@ augroup vimrcEx
   endfunction
   call MapCR()
 
-  autocmd! FileType c  map <leader>r :! clear && make %:r && ./%:r<cr>
-  autocmd  FileType c map <leader>v :! clear && valgrind ./%:r<cr>
-  autocmd  FileType c map <leader>g :! clear && cgdb ./%:r<cr>
-  autocmd! FileType asm  map <leader>r :! clear && gcc -o %:r -m32 % && ./%:r<cr>
-  autocmd! FileType pascal map <leader>r :! clear && pc %:r && ./%:r<cr>
-  autocmd! FileType php  map <leader>r :! clear && php %<cr>
-  autocmd! FileType javascript  map <leader>r :! clear && node %<cr>
-  autocmd! FileType perl  map <leader>r :! clear && perl %<cr>
-  autocmd! FileType ruby map <Leader>r :!clear && ruby %<cr>
+  autocmd! FileType c  noremap <leader>r :! clear && make %:r && ./%:r<cr>
+  autocmd  FileType c noremap <leader>v :! clear && valgrind ./%:r<cr>
+  autocmd  FileType c noremap <leader>g :! clear && cgdb ./%:r<cr>
+  autocmd! FileType asm  noremap <leader>r :! clear && gcc -o %:r -m32 % && ./%:r<cr>
+  autocmd! FileType pascal noremap <leader>r :! clear && pc %:r && ./%:r<cr>
+  autocmd! FileType php  noremap <leader>r :! clear && php %<cr>
+  autocmd! FileType javascript  noremap <leader>r :! clear && node %<cr>
+  autocmd! FileType perl  noremap <leader>r :! clear && perl %<cr>
+  autocmd! FileType ruby noremap <Leader>r :!clear && ruby %<cr>
 
   command! -nargs=* -complete=file -bar JavaCompile ! clear && javac-algs4 % && java-algs4 %:r <args>
 
-  autocmd! FileType java  map <leader>r :JavaCompile<space>
+  autocmd! FileType java  noremap <leader>r :JavaCompile<space>
 
-  autocmd FileType scheme map <leader>r :! clear && racket -e '(load "%")'<cr>
+  autocmd FileType scheme noremap <leader>r :! clear && racket -e '(load "%")'<cr>
 
   au BufRead,BufNewFile *.ru setfiletype ruby
 
@@ -249,39 +249,43 @@ set statusline=%<%f\ %y%m%r%=%-14.(%l,%c%V%)\ %P
 
 " Misc Key Maps {{{ "
 " Toggle between two files
-map <leader>f <C-^>
+noremap <leader>f <C-^>
 " Move around split with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 " toggle window
-map <leader>w <c-w>w
+noremap <leader>w <c-w>w
 " toggle fold
 nnoremap <Space> za
 " Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
+inoremap <c-l> <space>=><space>
 " Scoala, PASCAL
 autocmd FileType pascal inoremap <C-l> <space>:=<space>
 autocmd FileType st inoremap <C-l> <space>:=<space>
 
 " Tab mappings
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
+noremap <leader>tt :tabnew<cr>
+noremap <leader>te :tabedit
+noremap <leader>tc :tabclose<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tn :tabnext<cr>
+noremap <leader>tp :tabprevious<cr>
+noremap <leader>tf :tabfirst<cr>
+noremap <leader>tl :tablast<cr>
+noremap <leader>tm :tabmove
 
 " toggle list chars
-nmap <leader>l :set list!<cr>
+nnoremap <leader>l :set list!<cr>
 
 " Upcase a WORD
-imap <C-u> <C-c>bgUeea
+inoremap <C-u> <C-c>bgUeea
+" Upcase a WORD in normal mode
+nnoremap <C-u> viwU
 
+" Indent line back with shift-tab
+inoremap <s-tab> <c-d>
 
 " }}} Misc Key Maps "
 
@@ -292,13 +296,15 @@ imap <C-u> <C-c>bgUeea
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-map <Leader>m :call UltiSnips_ListSnippets()<cr>
+noremap <Leader>m :call UltiSnips_ListSnippets()<cr>
 autocmd! FileType php :UltiSnipsAddFiletypes php
 autocmd! FileType eruby :UltiSnipsAddFiletypes eruby
 autocmd! FileType ruby :UltiSnipsAddFiletypes ruby
 autocmd! FileType css :UltiSnipsAddFiletypes css
 autocmd! FileType javascript :UltiSnipsAddFiletypes javascript
 autocmd! FileType hmtl :UltiSnipsAddFiletypes html
+autocmd BufNewFile,BufRead *.scss set filetype=css
+
 
 """"""""""""""
 "  supertab  "
@@ -334,8 +340,8 @@ endif
 """""""""""
 "  ctrlp  "
 """""""""""
-map <leader><leader>t <C-p>
-map <leader><leader>y :CtrlPBuffer<cr>
+noremap <leader><leader>t <C-p>
+noremap <leader><leader>y :CtrlPBuffer<cr>
 let g:ctrlp_show_hidden=1
 let g:ctrlp_working_path_mode=0
 
@@ -347,8 +353,8 @@ imap <C-e> <C-y>,
 let g:user_emmet_mode='a'    "enable all function in all mode.
 let g:emmet_html5=1
 let g:use_emmet_complete_tag=1
-map <leader>y <C-y>n
-map <leader>Y <C-y>N
+nmap <leader>y <C-y>n
+nmap <leader>Y <C-y>N
 vmap <leader>w <C-y>,
 
 """""""""""""""""
@@ -359,14 +365,14 @@ let delimitMate_expand_cr=1
 " }}} Plugins configuration "
 
 " Arrow Keys are unacceptable {{{ "
-map <Left> :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up> :echo "no!"<cr>
-map <Down> :echo "no!"<cr>
-imap <Left> <esc>:echo "no!"<cr>i
-imap <Right> <esc>:echo "no!"<cr>i
-imap <Up> <esc>:echo "no!"<cr>i
-imap <Down> <esc>:echo "no!"<cr>i
+noremap <Left> :echo "no!"<cr>
+noremap <Right> :echo "no!"<cr>
+noremap <Up> :echo "no!"<cr>
+noremap <Down> :echo "no!"<cr>
+inoremap <Left> <esc>:echo "no!"<cr>i
+inoremap <Right> <esc>:echo "no!"<cr>i
+inoremap <Up> <esc>:echo "no!"<cr>i
+inoremap <Down> <esc>:echo "no!"<cr>i
 cnoremap <Left> <esc>:echo "no!"<cr>i
 cnoremap <Right> <esc>:echo "no!"<cr>i
 cnoremap <Up> <esc>:echo "no!"<cr>i
@@ -386,15 +392,15 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+noremap <leader>n :call RenameFile()<cr>
 
 " }}} Rename Current FIle "
 
 " XMPFILTER Settings {{{ "
 
 let g:xmpfilter_cmd = "xmpfilter -a --no-warnings"
-map <F5> <Plug>(xmpfilter-run)
-imap <F5> <Plug>(xmpfilter-run)
+noremap <F5> <Plug>(xmpfilter-run)
+inoremap <F5> <Plug>(xmpfilter-run)
 
 
 function! Ruby_eval_insert_hash()
@@ -409,12 +415,12 @@ function! Ruby_eval_no_align()
   exec "normal A # => \<esc>\<F5>\0"
 endfunction
 
-autocmd FileType ruby map <F6> :call Ruby_eval_insert_hash()<cr>
+autocmd FileType ruby noremap <F6> :call Ruby_eval_insert_hash()<cr>
 autocmd FileType ruby inoremap <F6> <C-R>=Ruby_eval_insert_hash()<cr>
-autocmd FileType ruby map <F4> :call Ruby_eval_no_align()<cr>
+autocmd FileType ruby noremap <F4> :call Ruby_eval_no_align()<cr>
 autocmd FileType ruby inoremap <F4> <C-R>=Ruby_eval_no_align()<cr>
-autocmd FileType ruby map <leader><leader>m <Plug>(xmpfilter-mark)
-autocmd FileType ruby map  <leader><leader>M 0f#Dx0
+autocmd FileType ruby noremap <leader><leader>m <Plug>(xmpfilter-mark)
+autocmd FileType ruby noremap  <leader><leader>M 0f#Dx0
 
 " }}} XMPFILTER Settings "
 
@@ -428,14 +434,14 @@ function! PromoteToLet()
   :normal ==
 endfunction
 au FileType ruby :command! PromoteToLet :call PromoteToLet()
-au FileType ruby :map <leader>p :PromoteToLet<cr>
+au FileType ruby :noremap <leader>p :PromoteToLet<cr>
 
 " }}} Promote variable to rspec let "
 
 " Vim as hex editor {{{ "
 
-map <leader>h :%!xxd<cr>
-map <leader>H :%!xxd -r<cr>
+noremap <leader>h :%!xxd<cr>
+noremap <leader>H :%!xxd -r<cr>
 
 " }}} Vim as hex editor "
 
@@ -480,7 +486,7 @@ function! TabToggle()
     set expandtab
   endif
 endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
+nnoremap <F9> mz:execute TabToggle()<CR>'z
 
 " }}} Toggle between tabs and spaces "
 
@@ -488,10 +494,11 @@ nmap <F9> mz:execute TabToggle()<CR>'z
 
 " Source the vimrc file after saving it
 if has("autocmd")
-  autocmd! bufwritepost .vimrc source $MYVIMRC
+  "autocmd! bufwritepost .vimrc source $MYVIMRC
   "autocmd bufwritepost .vimrc :AirlineRefresh
 endif
-nmap <leader>vr :edit $MYVIMRC<CR>
+nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " }}} Live vimrc "
 
@@ -528,3 +535,7 @@ au BufRead,BufNewFile /etc/nginx/*,nginx.conf,/usr/local/nginx/conf/* if &ft == 
                  \ "spelllang"
                  \ ]
 " }}} Allowed vim modeline commands "
+
+" Abbreviations {{{ "
+iabbrev @@@ andrei.glingeanu@gmail.com
+" }}} Abbreviations "
