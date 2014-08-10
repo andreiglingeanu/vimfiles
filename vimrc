@@ -11,21 +11,26 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 " Awesome rails.vim
 Plugin 'tpope/vim-rails'
+Plugin 'mattn/flappyvird-vim'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 " Plugin 'scrooloose/nerdcommenter'
 " Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-rvm'
 "Plugin 'scrooloose/syntastic'
 "Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-markdown'
+Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-rooter'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'xolox/vim-shell'
 Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
 "Plugin 'tpope/vim-fugitive'
-"Plugin 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'ervandew/matchem'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'scrooloose/nerdtree'
@@ -51,7 +56,7 @@ Plugin 'Raimondi/delimitMate'
 " Ultisnips
 Plugin 'SirVer/ultisnips'
 " Ultisnips snippets
-Plugin 'honza/vim-snippets'
+" Plugin 'honza/vim-snippets'
 
 
 " End list of plugins
@@ -168,6 +173,11 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
   autocmd FileType php  setlocal keywordprg=pman
 
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+  autocmd BufNewFile,BufRead *Cakefile set filetype=coffee
+  autocmd BufNewFile,BufRead *.coffeekup,*.ck set filetype=coffee
+  autocmd BufNewFile,BufRead *._coffee set filetype=coffee
+
   " Jump to last cursor position unless it's invalid or in an event handler
   autocmd BufReadPost *
               \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -193,13 +203,14 @@ augroup vimrcEx
   endfunction
   call MapCR()
 
-  autocmd! FileType c  noremap <leader>r :! clear && make %:r && ./%:r<cr>
-  autocmd  FileType c noremap <leader>v :! clear && valgrind ./%:r<cr>
-  autocmd  FileType c noremap <leader>g :! clear && cgdb ./%:r<cr>
+  " autocmd! FileType c  noremap <leader>r :! clear && make %:r && ./%:r<cr>
+  " autocmd  FileType c noremap <leader>v :! clear && valgrind ./%:r<cr>
+  " autocmd  FileType c noremap <leader>g :! clear && cgdb ./%:r<cr>
   autocmd! FileType asm  noremap <leader>r :! clear && gcc -o %:r -m32 % && ./%:r<cr>
   autocmd! FileType pascal noremap <leader>r :! clear && pc %:r && ./%:r<cr>
   autocmd! FileType php  noremap <leader>r :! clear && php %<cr>
   autocmd! FileType javascript  noremap <leader>r :! clear && node %<cr>
+  autocmd! FileType javascript  noremap <leader><leader>c Iconsole.log(<c-c>A);<c-c>
   autocmd! FileType perl  noremap <leader>r :! clear && perl %<cr>
   autocmd! FileType ruby noremap <Leader>r :!clear && ruby %<cr>
 
@@ -265,6 +276,10 @@ inoremap <c-l> <space>=><space>
 autocmd FileType pascal inoremap <C-l> <space>:=<space>
 autocmd FileType st inoremap <C-l> <space>:=<space>
 
+" add newline with control-enter
+" http://stackoverflow.com/questions/598113/can-terminals-detect-shift-enter-or-control-enter
+inoremap <C-j> <esc>O
+
 " Tab mappings
 noremap <leader>tt :tabnew<cr>
 noremap <leader>te :tabedit
@@ -289,6 +304,24 @@ inoremap <s-tab> <c-d>
 
 " }}} Misc Key Maps "
 
+" Rails mappings {{{ "
+" open routes
+map <leader>gr :topleft :split config/routes.rb<cr>
+map <leader>ts <c-w>s<c-w>K:enew<cr>
+map <leader>gs :topleft :split db/schema.rb<cr>
+map <leader>gL :topleft :split config/locales<cr>
+nnoremap <leader>F  :CtrlP .<cr>
+nnoremap <leader>gv :CtrlP app/views<cr>
+nnoremap <leader>gc :CtrlP app/controllers<cr>
+nnoremap <leader>gm :CtrlP app/models<cr>
+nnoremap <leader>gh :CtrlP app/helpers<cr>
+nnoremap <leader>gl :CtrlP lib<cr>
+nnoremap <leader>gp :CtrlP public<cr>
+nnoremap <leader>gS :CtrlP app/assets/stylesheets<cr>
+nnoremap <leader>gj :CtrlP app/assets/javascripts<cr>
+nnoremap <leader>gf :CtrlP features<cr>
+" }}} Rails mappings "
+
 " Plugins configuration {{{ "
 
 " Trigger configuration. Do not use <tab> if you use
@@ -303,6 +336,8 @@ autocmd! FileType ruby :UltiSnipsAddFiletypes ruby
 autocmd! FileType css :UltiSnipsAddFiletypes css
 autocmd! FileType javascript :UltiSnipsAddFiletypes javascript
 autocmd! FileType hmtl :UltiSnipsAddFiletypes html
+autocmd! FileType c :UltiSnipsAddFiletypes c
+autocmd! FileType cpp :UltiSnipsAddFiletypes cpp
 autocmd BufNewFile,BufRead *.scss set filetype=css
 
 
@@ -340,8 +375,8 @@ endif
 """""""""""
 "  ctrlp  "
 """""""""""
-noremap <leader><leader>t <C-p>
-noremap <leader><leader>y :CtrlPBuffer<cr>
+map <leader><leader>y :CtrlPBuffer<cr>
+map <leader><leader>t :CtrlPTag<cr>
 let g:ctrlp_show_hidden=1
 let g:ctrlp_working_path_mode=0
 
@@ -399,8 +434,8 @@ noremap <leader>n :call RenameFile()<cr>
 " XMPFILTER Settings {{{ "
 
 let g:xmpfilter_cmd = "xmpfilter -a --no-warnings"
-noremap <F5> <Plug>(xmpfilter-run)
-inoremap <F5> <Plug>(xmpfilter-run)
+map <F5> <Plug>(xmpfilter-run)
+imap <F5> <Plug>(xmpfilter-run)
 
 
 function! Ruby_eval_insert_hash()
@@ -539,3 +574,25 @@ au BufRead,BufNewFile /etc/nginx/*,nginx.conf,/usr/local/nginx/conf/* if &ft == 
 " Abbreviations {{{ "
 iabbrev @@@ andrei.glingeanu@gmail.com
 " }}} Abbreviations "
+
+" Open changed files {{{ "
+" Open a split for each dirty file in git
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+  let filenames = split(status, "\n")
+  exec "edit " . filenames[0]
+  for filename in filenames[1:]
+    exec "sp " . filename
+  endfor
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
+" }}} Open changed files "
+
+" Insert time {{{ "
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+" }}} Insert time "
+
+" The Little Schemer {{{ "
+  autocmd FileType scheme map <leader>r :!clear && racket -f ~/Projects/scheme/the_little_schemer/tls.ss %
+" }}} The Little Schemer "
