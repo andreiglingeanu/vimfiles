@@ -29,6 +29,7 @@ Plugin 'xolox/vim-shell'
 Plugin 'xolox/vim-misc'
 Plugin 'tpope/vim-surround'
 "Plugin 'tpope/vim-fugitive'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mustache/vim-mustache-handlebars'
 "Plugin 'ervandew/matchem'
@@ -281,15 +282,15 @@ autocmd FileType st inoremap <C-l> <space>:=<space>
 inoremap <C-j> <esc>O
 
 " Tab mappings
-noremap <leader>tt :tabnew<cr>
-noremap <leader>te :tabedit
-noremap <leader>tc :tabclose<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tn :tabnext<cr>
-noremap <leader>tp :tabprevious<cr>
-noremap <leader>tf :tabfirst<cr>
-noremap <leader>tl :tablast<cr>
-noremap <leader>tm :tabmove
+noremap <leader>pt :tabnew<cr>
+noremap <leader>pe :tabedit
+noremap <leader>pc :tabclose<cr>
+noremap <leader>po :tabonly<cr>
+noremap <leader>pn :tabnext<cr>
+noremap <leader>pp :tabprevious<cr>
+noremap <leader>pf :tabfirst<cr>
+noremap <leader>pl :tablast<cr>
+noremap <leader>pm :tabmove
 
 " toggle list chars
 nnoremap <leader>l :set list!<cr>
@@ -307,7 +308,7 @@ inoremap <s-tab> <c-d>
 " Rails mappings {{{ "
 " open routes
 map <leader>gr :topleft :split config/routes.rb<cr>
-map <leader>ts <c-w>s<c-w>K:enew<cr>
+map <leader>S <c-w>s<c-w>K:enew<cr>
 map <leader>gs :topleft :split db/schema.rb<cr>
 map <leader>gL :topleft :split config/locales<cr>
 nnoremap <leader>F  :CtrlP .<cr>
@@ -321,6 +322,13 @@ nnoremap <leader>gS :CtrlP app/assets/stylesheets<cr>
 nnoremap <leader>gj :CtrlP app/assets/javascripts<cr>
 nnoremap <leader>gf :CtrlP features<cr>
 " }}} Rails mappings "
+
+" rspec test runner {{{ "
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+" }}} rspec test runner "
 
 " Plugins configuration {{{ "
 
@@ -533,7 +541,7 @@ if has("autocmd")
   "autocmd bufwritepost .vimrc :AirlineRefresh
 endif
 nnoremap <leader>ev :edit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>es :source $MYVIMRC<CR>
 
 " }}} Live vimrc "
 
@@ -594,5 +602,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 " }}} Insert time "
 
 " The Little Schemer {{{ "
-  autocmd FileType scheme map <leader>r :!clear && racket -f ~/Projects/scheme/the_little_schemer/tls.ss %
+  autocmd FileType scheme map <leader>r :!clear && racket % -e ~/Projects/scheme/the_little_schemer/tls.ss <cr>
+  autocmd FileType scheme let b:delimitMate_quotes = ""
 " }}} The Little Schemer "
+
