@@ -131,7 +131,7 @@ set wildmode=full
 set wildmenu
 " set list chars
 set list
-set listchars=tab:\.\ ,trail:-,eol:\¬
+set listchars=tab:\.\ ,trail:-,eol:\~
 set linebreak
 " show break symbol
 set showbreak=>\
