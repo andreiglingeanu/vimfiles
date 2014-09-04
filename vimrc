@@ -11,7 +11,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 " Awesome rails.vim
 Plugin 'tpope/vim-rails'
+" Plugin 'tommcdo/vim-exchange'
 Plugin 'mattn/flappyvird-vim'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
@@ -66,7 +68,7 @@ call vundle#end()
 filetype plugin indent on
 
 " leader key
-let mapleader=","
+let mapleader=" "
 
 " }}}  "
 
@@ -74,6 +76,8 @@ let mapleader=","
 
 " autoread file when changed
 set autoread
+" edit in russian with ease
+" set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 " set modelines
 set modeline
 " use visual bell instead of beeping
@@ -270,7 +274,7 @@ nnoremap <c-l> <c-w>l
 " toggle window
 noremap <leader>w <c-w>w
 " toggle fold
-nnoremap <Space> za
+nnoremap <Space>z za
 " Insert a hash rocket with <c-l>
 inoremap <c-l> <space>=><space>
 " Scoala, PASCAL
@@ -605,4 +609,3 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
   autocmd FileType scheme map <leader>r :!clear && racket % -e ~/Projects/scheme/the_little_schemer/tls.ss <cr>
   autocmd FileType scheme let b:delimitMate_quotes = ""
 " }}} The Little Schemer "
-
