@@ -9,8 +9,9 @@ Plugin 'gmarik/Vundle.vim'
 
 " Colorschemes
 Plugin 'flazz/vim-colorschemes'
+Plugin 'sjl/gundo.vim'
 " Awesome rails.vim
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 " Plugin 'tommcdo/vim-exchange'
 Plugin 'mattn/flappyvird-vim'
 Plugin 'AndrewRadev/splitjoin.vim'
@@ -60,6 +61,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 " Ultisnips snippets
 " Plugin 'honza/vim-snippets'
+Plugin 'AndrewRadev/switch.vim'
 
 
 " End list of plugins
@@ -110,6 +112,8 @@ set colorcolumn=80
 set cmdheight=1
 " copy indent from previous line
 set autoindent
+" set tilda operator
+set tildeop
 " set smartindent
 set switchbuf=useopen
 " show tab line only when there is more than one tab
@@ -357,6 +361,11 @@ autocmd BufNewFile,BufRead *.scss set filetype=css
 "  supertab  "
 """"""""""""""
 let g:SuperTabCrMapping = 0
+
+""""""""""""""""
+"  switch.vim  "
+""""""""""""""""
+nnoremap <leader>o :Switch<cr>
 
 """""""""""""""
 "  rails.vim  "
