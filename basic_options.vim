@@ -7,8 +7,8 @@ set modeline
 " use visual bell instead of beeping
 set visualbell
 " show number column
-set number
-set numberwidth=1
+" set number
+" set numberwidth=1
 set hidden
 " save lots of lines to undo
 set history=1000
