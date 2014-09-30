@@ -10,26 +10,7 @@ source ~/vimfiles/folding.vim
 source ~/vimfiles/gui.vim
 source ~/vimfiles/autocommands.vim
 source ~/vimfiles/runners.vim
-
-" Color {{{ "
-
-" Use 256 colors (Use this only if your terminal supports 256 colours)
-set t_Co=256
-
-set background=dark
-if !has("gui_running")
-  "colorscheme t256
-  "colorscheme desert256
-  "colorscheme devbox-dark-256
-  " let g:seoul256_background = 256
-  colorscheme molokai
-  let g:molokai_original=1
-  set background=dark
-else
-  colorscheme codeschool
-endif
-
-" }}} Color "
+source ~/vimfiles/colors.vim
 
 " Status Line {{{ "
 set laststatus=2
@@ -148,7 +129,7 @@ let g:ruby_path = "/usr/bin/ruby"
 "  syntasic  "
 """"""""""""""
 let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1    " Put errors on left side
+" let g:syntastic_enable_signs = 1    " Put errors on left side
 let g:syntastic_quiet_warnings = 1  " Only errors, not warnings please
 let g:syntastic_disabled_filetypes = ['html']
 if has('unix')
