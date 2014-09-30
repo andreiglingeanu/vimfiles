@@ -6,9 +6,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Colorschemes
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'quanganhdo/grb256'
-Plugin 'mgutz/vim-colors'
+Plugin 'flazz/vim-colorschemes'
+" Plugin 'quanganhdo/grb256'
+" Plugin 'mgutz/vim-colors'
 Plugin 'sjl/gundo.vim'
 " Awesome rails.vim
 " Plugin 'tpope/vim-rails'
