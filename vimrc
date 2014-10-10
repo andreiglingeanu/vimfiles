@@ -213,3 +213,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
   autocmd FileType scheme map <leader>r :!clear && racket % -e ~/Projects/scheme/the_little_schemer/tls.ss <cr>
   autocmd FileType scheme let b:delimitMate_quotes = ""
 " }}} The Little Schemer "
+
+" Open files directory in current file {{{ "
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" }}} Open files directory in current file "

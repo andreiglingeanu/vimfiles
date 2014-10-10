@@ -13,6 +13,10 @@ augroup runners
         \ command! -nargs=* -complete=file -bar Debug
         \ ! clear && cgdb ./%:r
 
+  autocmd FileType cpp
+        \ command! -nargs=* -complete=file -bar Runner
+        \ ! clear && g++ -o %:r % && ./%:r
+
   autocmd! FileType asm
         \ command! -nargs=* -complete=file -bar Runner
         \ ! clear && gcc -o %:r -m32 % && ./%:r
@@ -33,7 +37,7 @@ augroup runners
 
   autocmd! FileType ruby
         \ command! -nargs=* -complete=file -bar Runner
-        \ ! clear && ruby
+        \ ! clear && ruby %
 
   autocmd! FileType java
         \ command! -nargs=* -complete=file -bar Runner

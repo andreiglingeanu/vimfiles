@@ -7,8 +7,8 @@ set modeline
 " use visual bell instead of beeping
 set visualbell
 " show number column
-" set number
-" set numberwidth=1
+set number
+set numberwidth=1
 set hidden
 " save lots of lines to undo
 set history=1000
@@ -61,7 +61,7 @@ set wildmode=full
 set wildmenu
 " set list chars
 set list
-set listchars=tab:\.\ ,trail:-,eol:\~
+set listchars=tab:\.\ ,trail:-,eol:¬
 set linebreak
 " show break symbol
 set showbreak=>\

@@ -76,3 +76,8 @@ vmap <leader>w <C-y>,
 """""""""""""""""
 imap <C-K> <Plug>delimitMateS-Tab
 let delimitMate_expand_cr=1
+
+""""""""""""""
+"  minitest  "
+""""""""""""""
+set completefunc=syntaxcomplete#Complete
