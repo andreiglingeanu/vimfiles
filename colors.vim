@@ -3,7 +3,7 @@ set t_Co=256
 
 set background=dark
 if !has("gui_running")
-  " colorscheme t256
+  "colorscheme t256
   "colorscheme desert256
   "colorscheme devbox-dark-256
   " let g:seoul256_background = 256

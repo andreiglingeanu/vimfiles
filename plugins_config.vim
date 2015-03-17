@@ -12,8 +12,7 @@ autocmd! FileType javascript :UltiSnipsAddFiletypes javascript
 autocmd! FileType hmtl :UltiSnipsAddFiletypes html
 autocmd! FileType c :UltiSnipsAddFiletypes c
 autocmd! FileType cpp :UltiSnipsAddFiletypes cpp
-autocmd BufNewFile,BufRead *.scss set filetype=css
-
+autocmd! FileType less :UltiSnipsAddFiletypes css
 
 """"""""""""""
 "  supertab  "
@@ -81,3 +80,8 @@ let delimitMate_expand_cr=1
 "  minitest  "
 """"""""""""""
 set completefunc=syntaxcomplete#Complete
+
+"""""""""""""""""
+"  Vim Partial  "
+"""""""""""""""""
+

@@ -79,3 +79,10 @@ noremap <leader>pm :tabmove
 inoremap <C-u> <C-c>bgUeea
 " Upcase a WORD in normal mode
 nnoremap <C-u> viwU
+
+""""""""""""""""""
+"  bang command  "
+""""""""""""""""""
+nnoremap ! :!
+
+

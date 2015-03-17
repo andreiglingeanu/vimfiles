@@ -15,6 +15,8 @@ source ~/vimfiles/statusline.vim
 source ~/vimfiles/mappings.vim
 source ~/vimfiles/plugins_config.vim
 
+runtime macros/matchit.vim
+
 " Arrow Keys are unacceptable {{{ "
 noremap <Left> :echo "no!"<cr>
 noremap <Right> :echo "no!"<cr>
@@ -52,7 +54,6 @@ noremap <leader>n :call RenameFile()<cr>
 let g:xmpfilter_cmd = "xmpfilter -a --no-warnings"
 map <F5> <Plug>(xmpfilter-run)
 imap <F5> <Plug>(xmpfilter-run)
-
 
 function! Ruby_eval_insert_hash()
   let curline=line(".")

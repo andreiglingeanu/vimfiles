@@ -11,7 +11,7 @@ augroup runners
 
   autocmd FileType c
         \ command! -nargs=* -complete=file -bar Debug
-        \ ! clear && cgdb ./%:r
+        \ ! clear && gdb ./%:r
 
   autocmd FileType cpp
         \ command! -nargs=* -complete=file -bar Runner
@@ -24,6 +24,9 @@ augroup runners
   autocmd! FileType javascript
         \ command! -nargs=* -complete=file -bar Runner ! clear && node %
 
+  autocmd! FileType python
+        \ command! -nargs=* -complete=file -bar Runner ! clear && python %
+
   autocmd! FileType php
         \ command! -nargs=* -complete=file -bar Runner ! clear && php %
 
@@ -35,13 +38,17 @@ augroup runners
         \ command! -nargs=* -complete=file -bar Runner
         \ ! clear && perl %
 
-  autocmd! FileType ruby
-        \ command! -nargs=* -complete=file -bar Runner
+  autocmd! filetype ruby
+        \ command! -nargs=* -complete=file -bar runner
         \ ! clear && ruby %
+
+  autocmd! filetype ruby
+        \ command! -nargs=* -complete=file -bar IRB
+        \ ! clear && irb -I . -r %:r
 
   autocmd! FileType java
         \ command! -nargs=* -complete=file -bar Runner
-        \ ! clear && javac % && java %:r
+        \ ! clear && javac % && java %:r <args>
 
   autocmd! FileType scheme
         \ command! -nargs=* -complete=file -bar Runner
