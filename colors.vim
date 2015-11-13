@@ -3,14 +3,21 @@ set t_Co=256
 
 set background=dark
 if !has("gui_running")
-  colorscheme t256
-  "colorscheme desert256
+  set background=light
+  let g:solarized_termcolors=256
+  " colorscheme solarized
+  " colorscheme seoul256-light
+  colorscheme badwolf
+  " let g:badwolf_darkgutter = 1
+  let g:badwolf_tabline = 2
+  let g:badwolf_css_props_highlight = 1
   "colorscheme devbox-dark-256
   " let g:seoul256_background = 256
   " colorscheme molokai
   " let g:molokai_original=1
-  set background=dark
+  set background=light
 else
-  colorscheme codeschool
+  set background=light
+  colorscheme solarized
 endif
 

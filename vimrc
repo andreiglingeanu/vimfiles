@@ -149,7 +149,7 @@ if has("autocmd")
   "autocmd! bufwritepost .vimrc source $MYVIMRC
   "autocmd bufwritepost .vimrc :AirlineRefresh
 endif
-nnoremap <leader>ev :edit $MYVIMRC<CR>
+nnoremap <leader>ec :edit $MYVIMRC<CR>
 nnoremap <leader>es :source $MYVIMRC<CR>
 
 " }}} Live vimrc "
@@ -218,3 +218,8 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 " Open files directory in current file {{{ "
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }}} Open files directory in current file "
+
+" PHP Documentation {{{ "
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+" }}} PHP Documentation "

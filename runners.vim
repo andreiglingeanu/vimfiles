@@ -5,6 +5,10 @@ augroup runners
         \ command! -nargs=* -complete=file -bar Runner
         \ ! clear && make %:r && ./%:r
 
+  autocmd! FileType swift
+        \ command! -nargs=* -complete=file -bar Runner
+        \ ! clear && swift %
+
   autocmd FileType c
         \ command! -nargs=* -complete=file -bar Valgrind
         \ ! clear && valgrind ./%:r
@@ -57,6 +61,10 @@ augroup runners
   autocmd! FileType sml
         \ command! -nargs=* -complete=file -bar Runner
         \ ! clear && sml %
+
+  autocmd! FileType haskell
+        \ command! -nargs=* -complete=file -bar Runner
+        \ ! clear && ghci %
 
   " command!
         " \ -nargs=* -complete=file -bar JavaCompile
