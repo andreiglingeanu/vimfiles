@@ -38,7 +38,9 @@ augroup vimrcEx
   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
   " .ru and .thor are Ruby.
   au BufRead,BufNewFile *.ru set filetype=ruby
+  au BufRead,BufNewFile *.cap set filetype=ruby
   au BufRead,BufNewFile *.thor set filetype=ruby
   au BufRead,BufNewFile Guardfile set filetype=ruby
   au BufRead,BufNewFile Rakefile set filetype=ruby
+  au BufRead,BufNewFile Berksfile set filetype=ruby
 augroup END

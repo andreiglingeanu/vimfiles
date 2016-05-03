@@ -14,6 +14,7 @@ source ~/vimfiles/colors.vim
 source ~/vimfiles/statusline.vim
 source ~/vimfiles/mappings.vim
 source ~/vimfiles/plugins_config.vim
+source ~/vimfiles/launchers.vim
 
 runtime macros/matchit.vim
 
@@ -149,8 +150,8 @@ if has("autocmd")
   "autocmd! bufwritepost .vimrc source $MYVIMRC
   "autocmd bufwritepost .vimrc :AirlineRefresh
 endif
-nnoremap <leader>ec :edit $MYVIMRC<CR>
-nnoremap <leader>es :source $MYVIMRC<CR>
+nnoremap <leader>cc :edit $MYVIMRC<CR>
+nnoremap <leader>cs :source $MYVIMRC<CR>
 
 " }}} Live vimrc "
 
@@ -191,6 +192,8 @@ au BufRead,BufNewFile /etc/nginx/*,nginx.conf,/usr/local/nginx/conf/* if &ft == 
 " Abbreviations {{{ "
 iabbrev @@@ andrei.glingeanu@gmail.com
 " }}} Abbreviations "
+" andrei.glingeanu@gmail.com
+"
 
 " Open changed files {{{ "
 " Open a split for each dirty file in git
@@ -217,9 +220,16 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 
 " Open files directory in current file {{{ "
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+map <leader>V :vsp %%
+set splitright
+set splitbelow
+
 " }}} Open files directory in current file "
 
 " PHP Documentation {{{ "
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 " }}} PHP Documentation "
+"

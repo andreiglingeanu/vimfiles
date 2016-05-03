@@ -19,11 +19,12 @@ nnoremap <leader>gf :CtrlP features<cr>
 """"""""""""""""""""""
 "  ruby test runner  "
 """"""""""""""""""""""
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-let g:rspec_command = "!clear && rspec {spec}"
+
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+" let g:rspec_command = "!clear && rspec {spec}"
 
 """""""""""""""
 "  Quick Fix  "
@@ -92,32 +93,38 @@ nnoremap <C-u> viwU
 """"""""""""""""""
 nnoremap ! :!
 
-"""""""""""
-"  VIMUX  "
-"""""""""""
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
-
-" Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>
-
-" Zoom the runner pane (use <bind-key> z to restore runner pane)
-map <Leader>vz :call VimuxZoomRunner()<CR>
-
-" Clear runner
-map <Leader>vv :call VimuxRunCommand("clear")<CR>
-
 """""""""""""""""""""""""""""""""""""""""
 "  Nice file completion in insert mode  "
 """""""""""""""""""""""""""""""""""""""""
-
 inoremap <C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
+
+""""""""""""
+"  tricks  "
+""""""""""""
+map <leader>l :w\|:!reload-chrome && open -a Google\ Chrome<cr><cr>
+
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\|UU\)" | sed "s/^.\{3\}//"')
+  let filenames = split(status, "\n")
+  exec "edit " . filenames[0]
+  for filename in filenames[1:]
+    exec "sp " . filename
+  endfor
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
+
+command! CopyFilePath :let @+ = expand("%")
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FindConditionals COMMAND
+" Start a search for conditional branches, both implicit and explicit
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! FindConditionals :normal /\<if\>\|\<unless\>\|\<and\>\|\<or\>\|||\|&&<cr>
+
+""""""""""""""""""""
+"  Open Shortcode  "
+""""""""""""""""""""
+map <leader>ts :CtrlP framework-customizations/extensions/shortcodes/shortcodes/<cr>
+map <leader>te :CtrlP framework-customizations/extensions/<cr>
+

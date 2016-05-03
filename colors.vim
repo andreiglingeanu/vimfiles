@@ -7,7 +7,9 @@ if !has("gui_running")
   let g:solarized_termcolors=256
   " colorscheme solarized
   " colorscheme seoul256-light
-  colorscheme badwolf
+  " colorscheme badwolf
+  colorscheme vividchalk
+  " colorscheme Dracula
   " let g:badwolf_darkgutter = 1
   let g:badwolf_tabline = 2
   let g:badwolf_css_props_highlight = 1
@@ -18,6 +20,6 @@ if !has("gui_running")
   set background=light
 else
   set background=light
-  colorscheme solarized
+  colorscheme vividchalk
 endif
 

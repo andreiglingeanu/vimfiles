@@ -3,7 +3,7 @@
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-noremap <Leader>m :call UltiSnips_ListSnippets()<cr>
+" noremap <Leader>m :call UltiSnips_ListSnippets()<cr>
 autocmd! FileType php :UltiSnipsAddFiletypes php
 autocmd! FileType eruby :UltiSnipsAddFiletypes eruby
 autocmd! FileType ruby :UltiSnipsAddFiletypes ruby
@@ -147,4 +147,79 @@ set diffopt+=vertical
 let g:github_access_token = "f39ea9fc53676b876d422ec307a718f9ccf86261"
 
 let g:gissues_async_omni = 1
+
+"""""""""""""""""""""""""
+"  seeing is believing  "
+"""""""""""""""""""""""""
+
+autocmd FileType ruby nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <F4> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <F5> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <F5> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <F5> <Plug>(xmpfilter-run)
+
+""""""""""""
+"  rooter  "
+""""""""""""
+let g:rooter_patterns = ['.rooter', 'Rakefile', '.git/']
+
+
+""""""""""""""""""
+"  editor cofig  "
+""""""""""""""""""
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_core_mode = 'external_command'
+
+
+"""""""""""
+"  unite  "
+"""""""""""
+   let s:filters = {
+   \   "name" : "preferred_unite_output",
+   \}
+   function! s:filters.filter(candidates, context)
+      for candidate in a:candidates
+         let bufname = bufname(candidate.action__buffer_nr)
+         let filename = fnamemodify(bufname, ':p:t')
+         let path = fnamemodify(bufname, ':p:h')
+
+         " Customize output format.
+         let candidate.abbr = printf("[%s] %s\\%s", filename, path, filename)
+      endfor
+      return a:candidates
+   endfunction
+
+   call unite#custom#source('buffer', 'converters', 'preferred_unite_output')
+
+    let g:unite_source_codesearch_ignore_case = 1
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    call unite#custom#source('file,file/new,file_mru,buffer,file_rec',
+    \ 'matchers', 'matcher_fuzzy')
+    let g:unite_data_directory='~/.vim/.cache/unite'
+    let g:unite_source_history_yank_enable=1
+    if executable('ag')
+        let g:unite_source_grep_command = 'ag'
+        let g:unite_source_grep_default_opts='-i -r --line-numbers --nocolor --nogroup -S'
+        let g:unite_source_grep_recursive_opt = ''
+    endif
+
+
+" nnoremap <c-k> :Unite file file_rec buffer<cr>
+nnoremap <c-;> :Unite line<cr>
+
+let g:vimfiler_as_default_explorer = 1
+
+" Enable file operation commands.
+" Edit file by tabedit.
+call vimfiler#custom#profile('default', 'context', {
+			\ 'safe' : 0,
+			\ })
+
+"""""""""""""""""""
+"  expand region  "
+"""""""""""""""""""
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 

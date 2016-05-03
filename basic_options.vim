@@ -41,7 +41,9 @@ set switchbuf=useopen
 " show tab line only when there is more than one tab
 set showtabline=1
 " backups
-set backup
+set nobackup
+set nowritebackup
+
 set backupdir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
 set backupdir=~/.vim-tmp,~/.tmp,/var/tmp,/tmp
@@ -70,6 +72,12 @@ set encoding=utf-8
 set fileencoding=utf-8
 " o-prefixed numbers are still decimal
 set nrformats-=octal
+
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+
+
 
 " Fix slow O inserts
 " ":set timeout timeoutlen=1000 ttimeoutlen=100
