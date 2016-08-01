@@ -28,6 +28,11 @@ augroup runners
   autocmd! FileType javascript
         \ command! -nargs=* -complete=file -bar Runner ! clear && node %
 
+  " npm i -g repl.js
+  " for this to work
+  autocmd FileType javascript
+        \ command! -nargs=* -complete=file -bar RunnerRepl ! clear && repl.js -f ./%
+
   autocmd! FileType python
         \ command! -nargs=* -complete=file -bar Runner ! clear && python %
 

@@ -8,7 +8,7 @@ if !has("gui_running")
   " colorscheme solarized
   " colorscheme seoul256-light
   " colorscheme badwolf
-  colorscheme vividchalk
+  colorscheme Benokai
   " colorscheme Dracula
   " let g:badwolf_darkgutter = 1
   let g:badwolf_tabline = 2
@@ -20,6 +20,7 @@ if !has("gui_running")
   set background=light
 else
   set background=light
-  colorscheme vividchalk
+  " colorscheme vividchalk
+  colorscheme solarized
 endif
 

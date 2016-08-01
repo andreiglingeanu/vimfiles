@@ -138,6 +138,8 @@ function! TabToggle()
   else
     set expandtab
   endif
+
+  normal zz
 endfunction
 nnoremap <F9> mz:execute TabToggle()<CR>'z
 

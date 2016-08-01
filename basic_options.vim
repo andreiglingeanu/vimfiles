@@ -12,7 +12,7 @@ set numberwidth=1
 set hidden
 " save lots of lines to undo
 set history=1000
-set expandtab
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4

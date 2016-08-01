@@ -7,7 +7,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Colorschemes
 Plugin 'sjl/badwolf'
-" Plugin 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
 " Plugin 'junegunn/seoul256.vim'
 " Plugin 'quanganhdo/grb256'
 " Plugin 'mgutz/vim-colors'
@@ -101,7 +101,7 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'jaxbot/github-issues.vim'
 " Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 't9md/vim-ruby-xmpfilter'
-Plugin 'editorconfig/editorconfig-vim'
+" Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'ujihisa/unite-colorscheme'
 Plugin 'Shougo/vimproc.vim'
@@ -111,6 +111,8 @@ Plugin 'dbakker/vim-projectroot'
 Plugin 'terryma/vim-expand-region'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
+Plugin 'tpope/vim-commentary'
+
 
 " End list of plugins
 call vundle#end()
