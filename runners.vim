@@ -1,6 +1,9 @@
 augroup runners
   autocmd!
 
+  command! -nargs=* -complete=file -bar QuickTmp
+    \ tabnew /tmp/quick-tmp.<args>
+
   autocmd! FileType c
         \ command! -nargs=* -complete=file -bar Runner
         \ ! clear && make %:r && ./%:r
@@ -31,13 +34,19 @@ augroup runners
   " npm i -g repl.js
   " for this to work
   autocmd FileType javascript
-        \ command! -nargs=* -complete=file -bar RunnerRepl ! clear && repl.js -f ./%
+        \ command! -nargs=* -complete=file -bar RunnerRepl ! clear && repl.js -f %:p
+
+  autocmd FileType javascript
+        \ command! -nargs=* -complete=file -bar RunnerReplFile ! clear && repl.js -f <args>
 
   autocmd! FileType python
         \ command! -nargs=* -complete=file -bar Runner ! clear && python %
 
   autocmd! FileType php
         \ command! -nargs=* -complete=file -bar Runner ! clear && php %
+
+  autocmd FileType php
+        \ command! -nargs=* -complete=file -bar RunnerRepl ! clear && psysh %
 
   autocmd! FileType pascal
         \ command! -nargs=* -complete=file -bar Runner

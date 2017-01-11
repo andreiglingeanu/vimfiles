@@ -222,6 +222,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
 
 " Open files directory in current file {{{ "
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+cnoremap ## <C-R>='/tmp/scratch.vim'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 map <leader>V :vsp %%
@@ -235,3 +236,5 @@ let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 " }}} PHP Documentation "
 "
+nnoremap __ :split \|<Space>
+nnoremap \|\| :vsplit \|<Space>

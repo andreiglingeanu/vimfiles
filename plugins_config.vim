@@ -223,3 +223,29 @@ call vimfiler#custom#profile('default', 'context', {
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+"""""""""""""
+"  scratch  "
+"""""""""""""
+let g:scratch_persistence_file = '/tmp/scratch.vim'
+
+""""""""""""""""
+"  rails I18n  "
+""""""""""""""""
+
+vmap <Leader>z :call I18nTranslateString()<CR>
+vmap <Leader>dt :call I18nDisplayTranslation()<CR>
+
+""""""""""""""
+"  vim rest  "
+""""""""""""""
+
+let g:vrc_horizontal_split = 1
+let g:vrc_show_command = 0
+
+
+""""""""""
+"  flow  "
+""""""""""
+let g:flow#enable = 0
+
+

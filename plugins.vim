@@ -112,7 +112,16 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'tpope/vim-commentary'
+Plugin 'mtth/scratch.vim'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'moll/vim-node'
+Plugin 'henrik/vim-yaml-flattener'
+Plugin 'sbruhns/rails-i18n-vim'
+Plugin 'andreiglingeanu/vim-i18n'
+Plugin 'diepm/vim-rest-console'
+Plugin 'posva/vim-vue'
+Plugin 'flowtype/vim-flow'
 
-
-" End list of plugins
+" End list of plugin
 call vundle#end()
+
