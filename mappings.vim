@@ -128,6 +128,9 @@ command! FindConditionals :normal /\<if\>\|\<unless\>\|\<and\>\|\<or\>\|||\|&&<c
 map <leader>ts :CtrlP framework-customizations/extensions/shortcodes/shortcodes/<cr>
 map <leader>te :CtrlP framework-customizations/extensions/<cr>
 
+map <leader>tt :tabedit %<cr>
+map <leader>tc :tabclose<cr>
+
 nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
 

@@ -10,7 +10,7 @@ Plugin 'sjl/badwolf'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'junegunn/seoul256.vim'
 " Plugin 'quanganhdo/grb256'
-" Plugin 'mgutz/vim-colors'
+Plugin 'mgutz/vim-colors'
 " Plugin 'sunaku/vim-ruby-minitest'
 " Plugin 'sjl/gundo.vim'
 Plugin 'tpope/vim-rbenv'
@@ -121,6 +121,7 @@ Plugin 'andreiglingeanu/vim-i18n'
 Plugin 'diepm/vim-rest-console'
 Plugin 'posva/vim-vue'
 Plugin 'flowtype/vim-flow'
+" Plugin 'dodie/vim-disapprove-deep-indentation'
 
 " End list of plugin
 call vundle#end()

@@ -5,10 +5,11 @@ set background=dark
 if !has("gui_running")
   set background=light
   let g:solarized_termcolors=256
+  colorscheme t256
   " colorscheme solarized
   " colorscheme seoul256-light
   " colorscheme badwolf
-  colorscheme Benokai
+  " colorscheme Benokai
   " colorscheme Dracula
   " let g:badwolf_darkgutter = 1
   let g:badwolf_tabline = 2
