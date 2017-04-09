@@ -13,9 +13,11 @@ set hidden
 " save lots of lines to undo
 set history=1000
 set noexpandtab
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
 " round scrollign to a multiple of shiftwidth
 set shiftround
 " show search match

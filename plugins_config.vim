@@ -34,7 +34,7 @@ let g:ruby_path = "/usr/bin/ruby"
 """"""""""""""
 "  syntasic  "
 """"""""""""""
-let g:syntastic_quiet_messages = {'level': 'warnings'}
+" let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_disabled_filetypes = ['html']
 
 let g:syntastic_always_populate_loc_list = 1
@@ -42,19 +42,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['jsxhint']
 
-if has('unix')
-  let g:syntastic_error_symbol = '★'
-  let g:syntastic_style_error_symbol = '>'
-  let g:syntastic_warning_symbol = '⚠'
-  let g:syntastic_style_warning_symbol = '>'
-else
-  let g:syntastic_error_symbol = '!'
-  let g:syntastic_style_error_symbol = '>'
-  let g:syntastic_warning_symbol = '.'
-  let g:syntastic_style_warning_symbol = '>'
-endif
+let g:syntastic_javascript_checkers = ['flow']
+
+""""""""""""""""
+"  javascript  "
+""""""""""""""""
+let g:javascript_plugin_flow = 1
 
 
 
@@ -170,7 +164,7 @@ let g:rooter_patterns = ['.rooter', 'Rakefile', '.git/']
 "  editor cofig  "
 """"""""""""""""""
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-let g:EditorConfig_core_mode = 'external_command'
+" let g:EditorConfig_core_mode = 'external_command'
 
 
 """""""""""
@@ -247,5 +241,7 @@ let g:vrc_show_command = 0
 "  flow  "
 """"""""""
 let g:flow#enable = 0
+let g:flow#flowpath = "/Users/andreiglingeanu/.nvm/versions/node/v7.7.3/bin/flow"
+
 
 

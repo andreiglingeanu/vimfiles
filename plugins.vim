@@ -101,7 +101,7 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'jaxbot/github-issues.vim'
 " Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 't9md/vim-ruby-xmpfilter'
-" Plugin 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'ujihisa/unite-colorscheme'
 Plugin 'Shougo/vimproc.vim'
@@ -121,6 +121,7 @@ Plugin 'andreiglingeanu/vim-i18n'
 Plugin 'diepm/vim-rest-console'
 Plugin 'posva/vim-vue'
 Plugin 'flowtype/vim-flow'
+" Plugin 'vim-syntastic/syntastic'
 " Plugin 'dodie/vim-disapprove-deep-indentation'
 
 " End list of plugin

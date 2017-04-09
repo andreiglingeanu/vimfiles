@@ -32,6 +32,7 @@ nnoremap <leader>gf :CtrlP features<cr>
 map <Leader>qn :cnext<cr>
 map <Leader>qp :cprevious<cr>
 
+map <Leader>j :FlowJumpToDef<cr>
 
 """"""""""""""""""""""""""
 "  toggle between files  "

@@ -28,11 +28,16 @@ augroup vimrcEx
   " autocmd! CmdwinEnter * :unmap <cr>
   " autocmd! CmdwinLeave * :call MapCR()
  
-  " Clear the search buffer when hitting return
-  function! MapCR()
-    nnoremap <cr> :nohlsearch<cr>
+  function! FoldingEnter()
+    if &buftype ==# 'quickfix'
+      execute "normal! \<CR>"
+    else
+      " https://github.com/mileszs/ack.vim/blob/eede0425f50d92be89ee8fb4560a5afb707c2a54/autoload/ack.vim#L158
+      call feedkeys(":nohlsearch \<CR>", "n")
+    endif
   endfunction
-  call MapCR()
+
+  nnoremap <CR> :call FoldingEnter()<CR>
 
 
   autocmd BufNewFile,BufRead *_spec.rb compiler rspec
